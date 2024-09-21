@@ -37,7 +37,7 @@ mongoose.connect(process.env.MONGO_URL, {
 
 //MIDDLEWARE
 
-app.use(express.json);
+app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
@@ -48,9 +48,9 @@ app.get("/",(req,res)=>{
 
 
 
-
 app.listen(8800, () => {
-  console.log("backend server is running!");
-});
+    console.log("backend server is running!");
+  });
+
 
 
