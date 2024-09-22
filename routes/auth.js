@@ -8,18 +8,34 @@ const User = require("../models/User")
 
 // REGISTER
 
-router.get("/register", async (req, res) => {
-    const user = await new User({
-        username:"John",
-        email:"john@gmail.com",
-        password:"123456"
-    })
+// router.get("/register", async (req, res) => {
+//     const user = await new User({
+//         username:"John",
+//         email:"john@gmail.com",
+//         password:"123456"
+//     })
 
-    await user.save();
-    res.send("OK")
+//     await user.save();
+//     res.send("OK")
+// });
+
+router.post("/register", async (req, res) => {
+    const user = new User({
+        username: req.body.username || "John", // For testing
+        email: req.body.email || "john@gmail.com", // For testing
+        password: req.body.password || "123456", // For testing
+    });
+
+    try {
+        console.log("Attempting to save user:", user);
+        await user.save();
+        console.log("User saved successfully");
+        res.send("OK");
+    } catch (error) {
+        console.error("Error saving user:", error);
+        res.status(500).send("Error saving user");
+    }
 });
-
-
 
 
 
