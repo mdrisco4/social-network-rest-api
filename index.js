@@ -1,5 +1,3 @@
-// import MongoStore from 'connect-mongo';
-
 const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
@@ -24,8 +22,7 @@ dotenv.config();
 
 mongoose.connect(
     process.env.MONGO_URL, 
-    { useNewUrlParser: true, useUnifiedTopology: true 
-})
+    )
 .then(() => {
     console.log("Connected to MongoDB");
 })
@@ -43,15 +40,9 @@ app.use(express.json());
 app.use(helmet());
 app.use(morgan("common"));
 
-app.use("/api/users" , userRoute);
-app.use("/api/auth" , authRoute);
+app.use("/api/users", userRoute);
+app.use("/api/auth", authRoute);
 
-// app.get("/",(req,res)=>{
-//     res.send("welcome to homepage")
-// })
-// app.get("/users",(req,res)=>{
-//     res.send("welcome to user page")
-// })
 
 
 
