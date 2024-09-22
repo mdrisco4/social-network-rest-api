@@ -19,6 +19,7 @@ dotenv.config();
 //     console.log("Connected to MongoDB");
 // });
 
+mongoose.set('debug', true);
 
 mongoose.connect(
     process.env.MONGO_URL, 
